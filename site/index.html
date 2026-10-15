@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Landskapshandlingar</title>
+  <meta name="description" content="Sökbart register över landskapshandlingar i Riksarkivet, sammankopplat med NAD, med länkar till digitaliserade bilder.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.datatables.net/v/dt/jq-3.7.0/jszip-3.10.1/dt-2.1.8/b-3.2.0/b-html5-3.2.0/datatables.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="main-header">
+    <a class="logo" href="#register">Landskapshandlingar</a>
+    <nav class="navbar">
+      <button type="button" class="sidebar-toggle" id="sidebar-toggle" aria-label="Visa/dölj meny">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <aside class="main-sidebar" id="sidebar">
+    <ul class="sidebar-menu">
+      <li><a href="#register" data-tab="register" id="menu-register">Register</a></li>
+      <li><a href="#om" data-tab="om" id="menu-about">Om-sida</a></li>
+    </ul>
+  </aside>
+
+  <main class="content-wrapper">
+    <section class="tab" id="tab-register">
+      <h1 class="sr-only">Landskapshandlingar – register</h1>
+      <div class="box">
+        <div class="loader" id="loader">Laddar …</div>
+        <table id="register" class="display compact"></table>
+      </div>
+    </section>
+
+    <section class="tab" id="tab-om" hidden>
+      <div class="box about">
+        <p>Detta register har satts samman av Staffan Betnér genom att koppla ihop information från Nationella ArkivDatabas (NAD) med det register över landskapshandlingar som Riksarkivet tidigare tillgängliggjort på sin hemsida under CC0-licens.
+        Helt saknade handlingar är bortplockade från detta register. Mitt register kan laddas ner i Excelformat <a id="source-link" href="https://drive.google.com/file/d/1SqcelFLCmrDJLUdYXyWL5wqbZchBRXxY/view?usp=sharing">härifrån.</a></p>
+        <p>Vill man nå mig gör man det bäst på mail: <a href="mailto:staffan@betner.nu">staffan@betner.nu</a></p>
+        <p class="updated" id="updated"></p>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.datatables.net/v/dt/jq-3.7.0/jszip-3.10.1/dt-2.1.8/b-3.2.0/b-html5-3.2.0/datatables.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

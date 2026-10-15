@@ -1,0 +1,105 @@
+/* Efterliknar shinydashboard (AdminLTE, skin-blue) */
+:root {
+  --header: #3c8dbc;
+  --logo: #367fa9;
+  --sidebar: #222d32;
+  --sidebar-active: #1e282c;
+  --sidebar-text: #b8c7ce;
+  --body: #ecf0f5;
+  --header-h: 50px;
+  --logo-w: 310px;
+  --sidebar-w: 230px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  font: 14px/1.42857 "Source Sans 3", "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+  color: #333;
+  background: var(--body);
+}
+a { color: #3c8dbc; text-decoration: none; }
+a:hover { color: #72afd2; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+/* ---------- Header ---------- */
+.main-header { position: fixed; inset: 0 0 auto 0; height: var(--header-h); display: flex; z-index: 30; }
+.logo {
+  width: var(--logo-w); flex: none; background: var(--logo); color: #fff;
+  font-size: 20px; font-weight: 300; line-height: var(--header-h); text-align: center;
+  transition: width .3s;
+}
+.logo:hover { color: #fff; background: #357ca5; }
+.navbar { flex: 1; background: var(--header); }
+.sidebar-toggle {
+  height: var(--header-h); padding: 0 15px; border: 0; background: none; cursor: pointer;
+  display: flex; flex-direction: column; justify-content: center; gap: 3px;
+}
+.sidebar-toggle span { display: block; width: 16px; height: 2px; background: #fff; border-radius: 1px; }
+.sidebar-toggle:hover { background: #367fa9; }
+
+/* ---------- Sidebar ---------- */
+.main-sidebar {
+  position: fixed; top: var(--header-h); bottom: 0; left: 0; width: var(--sidebar-w);
+  background: var(--sidebar); z-index: 20; transition: transform .3s;
+}
+.sidebar-menu { list-style: none; margin: 0; padding: 0; }
+.sidebar-menu a {
+  display: block; padding: 12px 5px 12px 15px; color: var(--sidebar-text);
+  border-left: 3px solid transparent;
+}
+.sidebar-menu a:hover, .sidebar-menu a.active { color: #fff; background: var(--sidebar-active); border-left-color: var(--header); }
+
+/* ---------- Innehåll ---------- */
+.content-wrapper {
+  margin-left: var(--sidebar-w); padding: calc(var(--header-h) + 15px) 15px 15px;
+  min-height: 100%; transition: margin-left .3s;
+}
+body.sidebar-collapse .main-sidebar { transform: translateX(-100%); }
+body.sidebar-collapse .content-wrapper { margin-left: 0; }
+
+@media (max-width: 767px) {
+  :root { --logo-w: 100%; }
+  .main-header { flex-direction: column; height: auto; }
+  .navbar { height: var(--header-h); flex: none; }
+  .main-sidebar { top: calc(var(--header-h) * 2); transform: translateX(-100%); }
+  .content-wrapper { margin-left: 0; padding-top: calc(var(--header-h) * 2 + 15px); }
+  body.sidebar-open .main-sidebar { transform: none; }
+}
+
+.box {
+  background: #fff; border-top: 3px solid #d2d6de; border-radius: 3px;
+  box-shadow: 0 1px 1px rgb(0 0 0 / .1); padding: 10px;
+}
+.about { max-width: 900px; font-size: 15px; }
+.about p { margin: 0 0 10px; }
+.updated { color: #777; font-size: 13px; }
+.loader { padding: 40px; text-align: center; color: #777; }
+
+/* ---------- Tabell ---------- */
+/* Tabellen scrollar i båda led inom sin ruta, med fast rubrikrad */
+.dt-layout-table > .dt-layout-cell {
+  overflow: auto;
+  max-height: calc(100vh - var(--header-h) - 150px);
+}
+table.dataTable { margin: 0 !important; }
+table.dataTable thead th {
+  position: sticky; z-index: 2; background: #fff; white-space: nowrap;
+}
+table.dataTable thead tr.titles th { top: 0; }
+table.dataTable thead tr.filters th { top: var(--title-row-h, 30px); padding: 4px 6px; font-weight: normal; border-bottom: 1px solid #ddd; }
+table.dataTable thead tr.filters input,
+table.dataTable thead tr.filters select {
+  width: 100%; min-width: 60px; font: inherit; font-size: 12px; padding: 2px 4px;
+  border: 1px solid #ccc; border-radius: 3px; background: #fff;
+}
+table.dataTable thead tr.filters input:focus,
+table.dataTable thead tr.filters select:focus { outline: none; border-color: #3c8dbc; }
+
+table.dataTable tbody td { vertical-align: top; }
+table.dataTable td.wrap { white-space: normal; min-width: 20em; max-width: 26em; }
+table.dataTable td.nowrap { white-space: nowrap; }
+
+.dt-container .dt-length select,
+.dt-container .dt-search input { font: inherit; padding: 3px 6px; border: 1px solid #ccc; border-radius: 3px; }
+div.dt-buttons > .dt-button { font: inherit; font-size: 13px; padding: 3px 10px; margin-left: 6px; border-radius: 3px; }
